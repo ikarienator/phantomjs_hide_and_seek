@@ -1,28 +1,4 @@
 (function () {
-    function indexOfString(a, b) {
-        var la = a.length;
-        var lb = b.length;
-        outer:
-            for (var i = 0; i <= la - lb; i++) {
-                for (var j = 0; j < lb; j++) {
-                    if (b.charAt(j) !== a.charAt(i + j)) {
-                        continue outer;
-                    }
-                }
-                return i;
-            }
-        return -1;
-    }
-
-    function indexOfArray(a, b) {
-        var la = a.length;
-        for (var i = 0; i < la; i++) {
-            if (a[i] === b) {
-                return i;
-            }
-        }
-        return -1;
-    }
 
     var bound = [];
     var oldCall = Function.prototype.call;
