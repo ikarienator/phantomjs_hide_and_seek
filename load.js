@@ -1,5 +1,4 @@
 var system = require('system');
-var fs = require('fs');
 var page = require('webpage').create();
 var injectedJs = system.args[2] || '';
 

