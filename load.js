@@ -2,6 +2,8 @@ var system = require('system');
 var page = require('webpage').create();
 var injectedJs = system.args[2] || '';
 
+//page.settings.userAgent = 'abc';
+
 page.onConsoleMessage = function (msg) {
     console.log(msg);
 };
