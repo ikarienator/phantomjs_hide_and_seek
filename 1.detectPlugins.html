@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Detect Plugins</title>
+</head>
+<body>
+
+</body>
+<script>
+  if (!(navigator.plugins instanceof PluginArray) || navigator.plugins.length == 0) {
+    console.log("PhantomJS environment detected.");
+  } else {
+    console.log("PhantomJS environment not detected.");
+  }
+</script>
+</html>
