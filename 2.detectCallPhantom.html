@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>Detect callPhantom</title>
+</head>
+<body>
+<script>
+  if (window.callPhantom || window._phantom) {
+    console.log("PhantomJS environment detected.");
+  } else {
+    console.log("PhantomJS environment not detected.");
+  }
+</script>
+</body>
+</html>

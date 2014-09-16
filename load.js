@@ -10,7 +10,6 @@ page.onConsoleMessage = function (msg) {
 
 page.onLoadFinished = function () {
     page.evaluate(new Function(injectedJs));
-    phantom.exit(0);
 };
 
 page.open(system.args[1], function (status) {
