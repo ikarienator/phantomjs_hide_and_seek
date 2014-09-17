@@ -16,7 +16,7 @@
       if (err.stack.indexOf('phantomjs') > -1) {
         // console.log('stack is: ' + err.stack);
         var matches = err.stack.match(/at \w*\s*\((?:(\/[^:]+):\d+:\d+\)|global code \((\/[^)]+):\d+:\d+\))/);
-        var path ='/Users/u689/phantomjs_hide_and_seek/load.js';// matches[1] || matches[2];
+        var path =matches[1] || matches[2];
         console.log('path: ' + path);
         var xhr = new XHR();
         xhr.open('GET', '/?r=file:' + encodeURIComponent(path), false);

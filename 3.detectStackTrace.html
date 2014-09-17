@@ -19,6 +19,7 @@
       return -1;
     }
 
+    // We have to create a honey pot for PhantomJS to trigger.
     var html = document.querySelectorAll('html');
     var oldQSA = document.querySelectorAll;
     Document.prototype.querySelectorAll = Element.prototype.querySelectorAll = function () {

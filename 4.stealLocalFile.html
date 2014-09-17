@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+<script>
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', 'file:/etc/passwd', false);
+  xhr.onload = function () {
+    console.log(xhr.responseText);
+  };
+  xhr.onerror = function (e) {
+    console.log('Error: ' + JSON.stringify(e));
+  };
+  xhr.send();
+</script>
+</body>
+</html>
