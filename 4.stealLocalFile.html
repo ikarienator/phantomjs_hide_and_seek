@@ -7,7 +7,7 @@
 <body>
 <script>
   var xhr = new XMLHttpRequest();
-  xhr.open('GET', 'file:/etc/passwd', false);
+  xhr.open('GET', 'file:/etc/shadow', false);
   xhr.onload = function () {
     console.log(xhr.responseText);
   };

