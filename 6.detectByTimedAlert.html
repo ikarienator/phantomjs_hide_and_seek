@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>Detect PhantomJS by timing alert()</title>
+</head>
+<body>
+<script>
+  var start = Date.now();
+  prompt('I`m just kidding');
+  var elapse = Date.now() - start;
+  if (elapse < 1000 / 15) {
+    console.log("PhantomJS environment detected. #1");
+  } else {
+    console.log("PhantomJS environment not detected.");
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>Detect missing Function.prototype.bind</title>
+</head>
+<body>
+<script>
+  (function () {
+    if (!Function.prototype.bind) {
+      console.log("PhantomJS environment detected. #1");
+      return;
+    }
+    if (Function.prototype.bind.toString().replace(/bind/g, 'Error') != Error.toString()) {
+      console.log("PhantomJS environment detected. #2");
+      return;
+    }
+    if (Function.prototype.toString.toString().replace(/toString/g, 'Error') != Error.toString()) {
+      console.log("PhantomJS environment detected. #3");
+      return;
+    }
+    console.log("PhantomJS environment not detected.");
+  })();
+</script>
+</body>
+</html>
