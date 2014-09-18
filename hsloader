@@ -1,6 +1,12 @@
+#! /usr/bin/env phantomjs
 var system = require('system');
 var fs = require('fs');
 var page = require('webpage').create();
+if (!system.args[1] || system.args[1] == '--help' || system.args[1] == '-h') {
+    console.log(fs.read('README.md'));
+    phantom.exit(0);
+}
+
 var spoofer = system.args[2] || '';
 
 //page.settings.userAgent = 'abc';
