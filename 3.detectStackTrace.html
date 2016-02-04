@@ -19,7 +19,7 @@
       return -1;
     }
 
-    // We have to create a honey pot for PhantomJS to trigger.
+    // We have to create a honeypot for PhantomJS to trigger.
     var html = document.querySelectorAll('html');
     var oldQSA = document.querySelectorAll;
     Document.prototype.querySelectorAll = Element.prototype.querySelectorAll = function () {
@@ -30,17 +30,6 @@
         err = e;
       }
       if (indexOfString(err.stack, 'phantomjs') > -1) {
-        var matches = err.stack.match(/at \w*\s*\((?:(\/[^:]+):\d+:\d+\)|global code \((\/[^)]+):\d+:\d+\))/);
-        var path =matches[1] || matches[2];
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', 'file:/etc/passwd', false);
-        xhr.onload = function () {
-          console.log(xhr.responseText);
-        };
-        xhr.onerror = function (e) {
-          console.log('Error: ' + JSON.stringify(e));
-        };
-        xhr.send();
         return html;
       } else {
         return oldQSA.apply(this, arguments);
